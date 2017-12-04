@@ -21,7 +21,7 @@ import logging
 from google.auth import exceptions
 from google.auth import transport
 import httplib2
-from six.moves import http_client  # httplib became http.client in 3.
+from six.moves import http_client
 
 
 _LOGGER = logging.getLogger(__name__)
