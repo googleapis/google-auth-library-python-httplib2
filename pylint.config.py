@@ -25,6 +25,7 @@ library_additions = {
             'protected-access',
             'redefined-variable-type',
             'similarities',
+            'useless-object-inheritance',
             'no-else-return',
         ],
     },
