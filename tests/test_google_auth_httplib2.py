@@ -97,15 +97,20 @@ class TestAuthorizedHttp(object):
         assert authed_http.http.connections == mock.sentinel.connections
 
     def test_follow_redirects(self):
-        authed_http = google_auth_httplib2.AuthorizedHttp(mock.sentinel.credentials)
+        auth_http = google_auth_httplib2.AuthorizedHttp(
+            mock.sentinel.credentials
+        )
 
-        assert authed_http.follow_redirects == authed_http.http.follow_redirects
+        assert auth_http.follow_redirects == auth_http.http.follow_redirects
 
-        authed_http.follow_redirects = mock.sentinel.follow_redirects
-        assert authed_http.http.follow_redirects == mock.sentinel.follow_redirects
+        mock_follow_redirects = mock.sentinel.follow_redirects
+        auth_http.follow_redirects = mock_follow_redirects
+        assert auth_http.http.follow_redirects == mock_follow_redirects
 
     def test_timeout(self):
-        authed_http = google_auth_httplib2.AuthorizedHttp(mock.sentinel.credentials)
+        authed_http = google_auth_httplib2.AuthorizedHttp(
+            mock.sentinel.credentials
+        )
 
         assert authed_http.timeout == authed_http.http.timeout
 
@@ -118,7 +123,9 @@ class TestAuthorizedHttp(object):
             http=MockHttp(MockResponse())
         )
 
-        authed_http.add_certificate("key", "cert", "domain", password="password")
+        authed_http.add_certificate(
+            "key", "cert", "domain", password="password"
+        )
         authed_http.http.add_certificate.assert_called_once_with(
             "key", "cert", "domain", password="password"
         )
