@@ -229,7 +229,7 @@ class AuthorizedHttp(object):
 
     def add_certificate(self, key, cert, domain, password=None):
         """Proxy to httplib2.Http.add_certificate."""
-        self.http.add_certificate(key, cert, domain, password)
+        self.http.add_certificate(key, cert, domain, password=password)
 
     @property
     def connections(self):
@@ -246,7 +246,7 @@ class AuthorizedHttp(object):
         """Proxy to httplib2.Http.follow_redirects."""
         return self.http.follow_redirects
 
-    @connections.setter
+    @follow_redirects.setter
     def follow_redirects(self, value):
         """Proxy to httplib2.Http.follow_redirects."""
         self.http.follow_redirects = value
@@ -256,7 +256,7 @@ class AuthorizedHttp(object):
         """Proxy to httplib2.Http.timeout."""
         return self.http.timeout
 
-    @connections.setter
+    @timeout.setter
     def timeout(self, value):
         """Proxy to httplib2.Http.timeout."""
         self.http.timeout = value
