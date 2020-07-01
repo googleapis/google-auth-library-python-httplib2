@@ -13,9 +13,9 @@
 # limitations under the License.
 
 import httplib2
-import mock
 import six
 from six.moves import http_client
+import mock
 
 import google_auth_httplib2
 from tests import compliance
