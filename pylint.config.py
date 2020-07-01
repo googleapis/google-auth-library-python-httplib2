@@ -27,6 +27,7 @@ library_additions = {
             'similarities',
             'useless-object-inheritance',
             'no-else-return',
+            'wrong-import-order',
         ],
     },
 }
