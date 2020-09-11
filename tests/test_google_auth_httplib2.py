@@ -159,7 +159,7 @@ class TestAuthorizedHttp(object):
         assert not mock_credentials.refresh.called
         assert mock_http.requests == [
             ('GET', self.TEST_URL, None, {'authorization': 'token'},
-            httplib2.DEFAULT_MAX_REDIRECTS, None)]
+                httplib2.DEFAULT_MAX_REDIRECTS, None)]
 
     def test_request_refresh(self):
         mock_credentials = mock.Mock(wraps=MockCredentials())
