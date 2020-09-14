@@ -201,7 +201,8 @@ class AuthorizedHttp(object):
         # Make the request.
         response, content = self.http.request(
             uri, method, body=body, headers=request_headers,
-            redirections=redirections, connection_type=connection_type)
+            redirections=redirections, connection_type=connection_type,
+            **kwargs)
 
         # If the response indicated that the credentials needed to be
         # refreshed, then refresh the credentials and re-attempt the
@@ -226,7 +227,8 @@ class AuthorizedHttp(object):
             return self.request(
                 uri, method, body=body, headers=headers,
                 redirections=redirections, connection_type=connection_type,
-                _credential_refresh_attempt=_credential_refresh_attempt + 1)
+                _credential_refresh_attempt=_credential_refresh_attempt + 1,
+                **kwargs)
 
         return response, content
 
