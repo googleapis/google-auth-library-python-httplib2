@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:GoogleCloudPlatform/google-auth-library-python-httplib2.git",
-        "sha": "2edc00be6dfc239802a521b1cf66bc516a20d4e6"
+        "sha": "0d77a5eaf383d5d77f51fbbebc5fd24c91f10f15"
       }
     },
     {

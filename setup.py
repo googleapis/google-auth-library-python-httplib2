@@ -17,6 +17,8 @@ import io
 from setuptools import setup
 
 
+version = "0.0.4"
+
 DEPENDENCIES = (
     'google-auth',
     'httplib2 >= 0.9.1',
@@ -30,9 +32,9 @@ with io.open('README.rst', 'r') as fh:
 
 setup(
     name='google-auth-httplib2',
-    version='0.0.4',
+    version=version,
     author='Google Cloud Platform',
-    author_email='jonwayne+google-auth@google.com',
+    author_email="googleapis-packages@google.com",
     description='Google Authentication Library: httplib2 transport',
     long_description=long_description,
     url='https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2',
