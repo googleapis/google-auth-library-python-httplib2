@@ -175,6 +175,10 @@ class AuthorizedHttp(object):
         # credentials.refresh).
         self._request = Request(self.http)
 
+    def close(self):
+        """Calls httplib2's Http.close"""
+        self.http.close()
+
     def request(self, uri, method='GET', body=None, headers=None,
                 redirections=httplib2.DEFAULT_MAX_REDIRECTS,
                 connection_type=None,

@@ -19,7 +19,7 @@ from setuptools import setup
 
 DEPENDENCIES = (
     'google-auth',
-    'httplib2 >= 0.9.1',
+    'httplib2 >= 0.15.0',
     'six'
 )
 
