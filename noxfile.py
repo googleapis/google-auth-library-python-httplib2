@@ -15,7 +15,7 @@
 import nox
 
 BLACK_VERSION = "black==19.3b0"
-BLACK_PATHS = ["google_auth_httplib2.py", "tests", "setup.py"]
+BLACK_PATHS = ["google_auth_httplib2.py", "tests"]
 
 TEST_DEPENDENCIES = [
     "flask",
@@ -76,16 +76,3 @@ def cover(session):
     )
     session.run("coverage", "report", "--show-missing", "--fail-under=100")
 
-
-@nox.session(python=DEFAULT_PYTHON_VERSION)
-def docs(session):
-    # This repo doesn't have docs, but keep this here since
-    # The docsfx session will fail if there isn't one
-    pass
-
-
-@nox.session(python=DEFAULT_PYTHON_VERSION)
-def docfx(session):
-    # This repo doesn't have docs, but keep this here since
-    # The docsfx session will fail if there isn't one
-    pass
