@@ -14,7 +14,7 @@
 
 import nox
 
-BLACK_VERSION = "black==19.3b0"
+BLACK_VERSION = "black==19.10b0"
 BLACK_PATHS = ["google_auth_httplib2.py", "tests"]
 
 TEST_DEPENDENCIES = [
