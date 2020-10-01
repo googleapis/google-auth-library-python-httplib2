@@ -14,6 +14,9 @@
 
 import nox
 
+BLACK_VERSION = "black==19.3b0"
+BLACK_PATHS = ["google_auth_httplib2.py", "tests", "setup.py"]
+
 TEST_DEPENDENCIES = [
     "flask",
     "mock",
@@ -22,10 +25,12 @@ TEST_DEPENDENCIES = [
     "pytest-localserver",
     "httplib2",
 ]
-BLACK_VERSION = "black==19.3b0"
-BLACK_PATHS = ["google_auth_httplib2.py", "tests"]
 
-@nox.session(python="3.7")
+DEFAULT_PYTHON_VERSION = "3.8"
+UNIT_TEST_PYTHON_VERSIONS = ["2.7", "3.5", "3.6", "3.7", "3.8"]
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def lint(session):
     session.install("flake8", "flake8-import-order", "docutils", BLACK_VERSION)
     session.install(".")
@@ -33,13 +38,13 @@ def lint(session):
     session.run(
         "flake8",
         "--import-order-style=google",
-        "--application-import-names=google,tests",
-        "google",
-        "tests",
+        "--application-import-names=google_auth_httplib2,tests",
+        *BLACK_PATHS,
     )
     session.run(
         "python", "setup.py", "check", "--metadata", "--restructuredtext", "--strict"
     )
+
 
 @nox.session(python="3.6")
 def blacken(session):
@@ -54,13 +59,15 @@ def blacken(session):
     session.install(BLACK_VERSION)
     session.run("black", *BLACK_PATHS)
 
-@nox.session(python=["2.7", "3.5", "3.6", "3.7", "3.8"])
+
+@nox.session(python=UNIT_TEST_PYTHON_VERSIONS)
 def unit(session):
     session.install(*TEST_DEPENDENCIES)
     session.install(".")
     session.run("pytest", "--cov=google_auth_httplib2", "--cov=tests", "tests")
 
-@nox.session(python="3.7")
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def cover(session):
     session.install(*TEST_DEPENDENCIES)
     session.install(".")
@@ -68,3 +75,10 @@ def cover(session):
         "pytest", "--cov=google_auth_httplib2", "--cov=tests", "--cov-report=", "tests"
     )
     session.run("coverage", "report", "--show-missing", "--fail-under=100")
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
+def docfx(session):
+    # This repo doesn't have docs, but keep this here since
+    # The docsfx session will fail if there isn't one
+    pass
