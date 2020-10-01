@@ -78,6 +78,13 @@ def cover(session):
 
 
 @nox.session(python=DEFAULT_PYTHON_VERSION)
+def docs(session):
+    # This repo doesn't have docs, but keep this here since
+    # The docsfx session will fail if there isn't one
+    pass
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def docfx(session):
     # This repo doesn't have docs, but keep this here since
     # The docsfx session will fail if there isn't one
