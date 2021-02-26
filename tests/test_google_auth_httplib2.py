@@ -103,10 +103,11 @@ class TestAuthorizedHttp(object):
         assert isinstance(authed_http.http, httplib2.Http)
 
     def test_close(self):
-        with mock.patch("httplib2.Http", autospec=True) as httplib2_http:
+        with mock.patch("httplib2.Http.close", autospec=True) as close:
             authed_http = google_auth_httplib2.AuthorizedHttp(mock.sentinel.credentials)
-
-            httplib2_http.close.assert_called_once()
+            authed_http.close()
+            
+            close.assert_called_once()
 
     def test_connections(self):
         authed_http = google_auth_httplib2.AuthorizedHttp(mock.sentinel.credentials)
