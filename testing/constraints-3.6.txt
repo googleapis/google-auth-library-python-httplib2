@@ -6,4 +6,4 @@
 # e.g., if setup.py has "google-cloud-foo >= 1.14.0, < 2.0.0dev",
 # Then this file should have google-cloud-foo==1.14.0
 google-auth==1.0.0
-httplib2==0.15.0
+httplib2==0.17.0
