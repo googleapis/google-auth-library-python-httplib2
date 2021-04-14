@@ -27,7 +27,7 @@ with io.open("README.rst", "r") as fh:
 
 setup(
     name="google-auth-httplib2",
-    version=version,
+    version=setuptools.sic(version),
     author="Google Cloud Platform",
     author_email="googleapis-packages@google.com",
     description="Google Authentication Library: httplib2 transport",
