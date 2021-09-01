@@ -12,4 +12,3 @@ paths = [".kokoro", ".github", ".flake8"]
 for p in paths:
     s.move(templated_files / p)
 
-# Remove the replacement below once https://github.com/googleapis/synthtool/pull/1188 is merged
