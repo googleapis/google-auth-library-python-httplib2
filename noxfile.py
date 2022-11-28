@@ -32,13 +32,11 @@ UNIT_TEST_PYTHON_VERSIONS = ["2.7", "3.5", "3.6", "3.7", "3.8"]
 
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def lint(session):
-    session.install("flake8", "flake8-import-order", "docutils", BLACK_VERSION, "click<8.1.0")
+    session.install("flake8", "docutils", BLACK_VERSION, "click<8.1.0")
     session.install(".")
     session.run("black", "--check", *BLACK_PATHS)
     session.run(
         "flake8",
-        "--import-order-style=google",
-        "--application-import-names=google_auth_httplib2,tests",
         *BLACK_PATHS,
     )
     session.run(
