@@ -1,6 +1,7 @@
 ``httplib2`` Transport for Google Auth
 ======================================
 
+
 |pypi|
 
 This library provides an `httplib2`_ transport for `google-auth`_.
@@ -15,6 +16,25 @@ This library provides an `httplib2`_ transport for `google-auth`_.
 
 .. _httplib2: https://github.com/httplib2/httplib2
 .. _google-auth: https://github.com/GoogleCloudPlatform/google-auth-library-python/
+
+
+[![Deprecated](https://img.shields.io/badge/status-deprecated-red.svg)](https://github.com/httplib2/httplib2)
+
+This project is deprecated and no longer actively maintained. 
+
+**Reason for deprecation:**
+
+* The library was created to provide legacy support for httplib2 to help clients migration from [oauth2client](https://github.com/googleapis/oauth2client) to [google-auth](https://github.com/googleapis/google-auth-library-python/tree/main)
+
+**Alternatives:**
+
+* For any new usages please see provided transport layers by [google-auth](https://github.com/googleapis/google-auth-library-python/tree/main) library.
+
+**Important notes:**
+
+* Existing users are encouraged to migrate to the recommended alternatives.
+* No further updates, bug fixes, or security patches will be provided.
+
 
 Installing
 ----------
