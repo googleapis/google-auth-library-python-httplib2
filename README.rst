@@ -4,10 +4,10 @@
 .. image:: https://img.shields.io/badge/status-deprecated-red.svg
     :target: https://github.com/httplib2/httplib2
 
-The library was created to help clients migrate from `oauth2client <https://github.com/googleapis/oauth2client>`_ to `google-auth <https://github.com/googleapis/google-auth-library-python/>`_, however this library is no longer maintained. For any new usages please see provided transport layers by `google-auth <https://github.com/googleapis/google-auth-library-python/>`_ library.
+The library was created to help clients migrate from `oauth2client <https://github.com/googleapis/oauth2client>`_ to `google-auth`_, however this library is no longer maintained. For any new usages please see provided transport layers by `google-auth`_ library.
 
 Introduction
-----------
+------------
 |pypi|
 
 This library provides an `httplib2`_ transport for `google-auth`_.
