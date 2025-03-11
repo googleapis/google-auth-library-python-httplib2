@@ -30,7 +30,7 @@ import nox
 FLAKE8_VERSION = "flake8==6.1.0"
 BLACK_VERSION = "black[jupyter]==23.7.0"
 ISORT_VERSION = "isort==5.11.0"
-LINT_PATHS = ["docs", "google", "tests", "noxfile.py", "setup.py"]
+LINT_PATHS = ["docs", "google_auth_httplib2.py", "tests", "noxfile.py", "setup.py"]
 
 DEFAULT_PYTHON_VERSION = "3.8"
 
@@ -91,7 +91,7 @@ def lint(session):
         "--check",
         *LINT_PATHS,
     )
-    session.run("flake8", "google", "tests")
+    session.run("flake8", "google_auth_httplib2.py", "tests")
 
 
 @nox.session(python=DEFAULT_PYTHON_VERSION)
@@ -186,7 +186,7 @@ def unit(session, protobuf_implementation):
         "py.test",
         "--quiet",
         f"--junitxml=unit_{session.python}_sponge_log.xml",
-        "--cov=google",
+        "--cov=google_auth_httplib2",
         "--cov=tests/unit",
         "--cov-append",
         "--cov-config=.coveragerc",
