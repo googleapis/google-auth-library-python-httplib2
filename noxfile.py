@@ -163,26 +163,13 @@ def install_unittest_dependencies(session, *constraints):
 
 
 @nox.session(python=UNIT_TEST_PYTHON_VERSIONS)
-@nox.parametrize(
-    "protobuf_implementation",
-    [ "python", "upb", "cpp" ],
-)
-def unit(session, protobuf_implementation):
+def unit(session):
     # Install all test dependencies, then install this package in-place.
-
-    if protobuf_implementation == "cpp" and session.python in ("3.11", "3.12", "3.13"):
-        session.skip("cpp implementation is not supported in python 3.11+")
 
     constraints_path = str(
         CURRENT_DIRECTORY / "testing" / f"constraints-{session.python}.txt"
     )
     install_unittest_dependencies(session, "-c", constraints_path)
-
-    # TODO(https://github.com/googleapis/synthtool/issues/1976):
-    # Remove the 'cpp' implementation once support for Protobuf 3.x is dropped.
-    # The 'cpp' implementation requires Protobuf<4.
-    if protobuf_implementation == "cpp":
-        session.install("protobuf<4")
 
     # Run py.test against the unit tests.
     session.run(
@@ -190,16 +177,13 @@ def unit(session, protobuf_implementation):
         "--quiet",
         f"--junitxml=unit_{session.python}_sponge_log.xml",
         "--cov=google_auth_httplib2",
-        "--cov=tests/unit",
+        "--cov=tests",
         "--cov-append",
         "--cov-config=.coveragerc",
         "--cov-report=",
         "--cov-fail-under=0",
         "tests",
         *session.posargs,
-        env={
-            "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": protobuf_implementation,
-        },
     )
 
 
@@ -372,15 +356,8 @@ def docfx(session):
 
 
 @nox.session(python="3.13")
-@nox.parametrize(
-    "protobuf_implementation",
-    [ "python", "upb", "cpp" ],
-)
-def prerelease_deps(session, protobuf_implementation):
+def prerelease_deps(session):
     """Run all tests with prerelease versions of dependencies installed."""
-
-    if protobuf_implementation == "cpp" and session.python in ("3.11", "3.12", "3.13"):
-        session.skip("cpp implementation is not supported in python 3.11+")
 
     # Install all dependencies
     session.install("-e", ".[all, tests, tracing]")
@@ -413,19 +390,8 @@ def prerelease_deps(session, protobuf_implementation):
     session.install(*constraints_deps)
 
     prerel_deps = [
-        "protobuf",
-        # dependency of grpc
-        "six",
-        "grpc-google-iam-v1",
-        "googleapis-common-protos",
-        "grpcio",
-        "grpcio-status",
-        "google-api-core",
         "google-auth",
-        "proto-plus",
-        "google-cloud-testutils",
-        # dependencies of google-cloud-testutils"
-        "click",
+        "httplib2",
     ]
 
     for dep in prerel_deps:
@@ -438,18 +404,11 @@ def prerelease_deps(session, protobuf_implementation):
     session.install(*other_deps)
 
     # Print out prerelease package versions
-    session.run(
-        "python", "-c", "import google.protobuf; print(google.protobuf.__version__)"
-    )
-    session.run("python", "-c", "import grpc; print(grpc.__version__)")
     session.run("python", "-c", "import google.auth; print(google.auth.__version__)")
 
     session.run(
         "py.test",
-        "tests/unit",
-        env={
-            "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": protobuf_implementation,
-        },
+        "tests",
     )
 
     system_test_path = os.path.join("tests", "system.py")
@@ -463,9 +422,6 @@ def prerelease_deps(session, protobuf_implementation):
             f"--junitxml=system_{session.python}_sponge_log.xml",
             system_test_path,
             *session.posargs,
-            env={
-                "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": protobuf_implementation,
-            },
         )
     if os.path.exists(system_test_folder_path):
         session.run(
@@ -474,7 +430,4 @@ def prerelease_deps(session, protobuf_implementation):
             f"--junitxml=system_{session.python}_sponge_log.xml",
             system_test_folder_path,
             *session.posargs,
-            env={
-                "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": protobuf_implementation,
-            },
         )
