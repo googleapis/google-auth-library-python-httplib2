@@ -34,15 +34,7 @@ LINT_PATHS = ["docs", "google_auth_httplib2.py", "tests", "noxfile.py", "setup.p
 
 DEFAULT_PYTHON_VERSION = "3.8"
 
-UNIT_TEST_PYTHON_VERSIONS: List[str] = [
-    "3.7",
-    "3.8",
-    "3.9",
-    "3.10",
-    "3.11",
-    "3.12",
-    "3.13",
-]
+UNIT_TEST_PYTHON_VERSIONS: List[str] = ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
 UNIT_TEST_STANDARD_DEPENDENCIES = [
     "mock",
     "asyncmock",
@@ -50,7 +42,10 @@ UNIT_TEST_STANDARD_DEPENDENCIES = [
     "pytest-cov",
     "pytest-asyncio",
 ]
-UNIT_TEST_EXTERNAL_DEPENDENCIES: List[str] = []
+UNIT_TEST_EXTERNAL_DEPENDENCIES: List[str] = [
+    "flask",
+    "pytest-localserver",
+]
 UNIT_TEST_LOCAL_DEPENDENCIES: List[str] = []
 UNIT_TEST_DEPENDENCIES: List[str] = []
 UNIT_TEST_EXTRAS: List[str] = []
@@ -170,7 +165,7 @@ def install_unittest_dependencies(session, *constraints):
 @nox.session(python=UNIT_TEST_PYTHON_VERSIONS)
 @nox.parametrize(
     "protobuf_implementation",
-    ["python", "upb", "cpp"],
+    [ "python", "upb", "cpp" ],
 )
 def unit(session, protobuf_implementation):
     # Install all test dependencies, then install this package in-place.
@@ -200,7 +195,7 @@ def unit(session, protobuf_implementation):
         "--cov-config=.coveragerc",
         "--cov-report=",
         "--cov-fail-under=0",
-        os.path.join("tests", "unit"),
+        "tests",
         *session.posargs,
         env={
             "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": protobuf_implementation,
@@ -209,6 +204,7 @@ def unit(session, protobuf_implementation):
 
 
 def install_systemtest_dependencies(session, *constraints):
+
     # Use pre-release gRPC for system tests.
     # Exclude version 1.52.0rc1 which has a known issue.
     # See https://github.com/grpc/grpc/issues/32163
@@ -378,7 +374,7 @@ def docfx(session):
 @nox.session(python="3.13")
 @nox.parametrize(
     "protobuf_implementation",
-    ["python", "upb", "cpp"],
+    [ "python", "upb", "cpp" ],
 )
 def prerelease_deps(session, protobuf_implementation):
     """Run all tests with prerelease versions of dependencies installed."""
