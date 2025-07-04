@@ -32,11 +32,11 @@ BLACK_VERSION = "black[jupyter]==23.7.0"
 ISORT_VERSION = "isort==5.11.0"
 LINT_PATHS = ["docs", "google_auth_httplib2.py", "tests", "noxfile.py", "setup.py"]
 
-DEFAULT_PYTHON_VERSION = "3.8"
+DEFAULT_PYTHON_VERSION = "3.10"
 
+# TODO(https://github.com/googleapis/google-auth-library-python-httplib2/issues/192):
+# Remove or restore testing for Python 3.7/3.8
 UNIT_TEST_PYTHON_VERSIONS: List[str] = [
-    "3.7",
-    "3.8",
     "3.9",
     "3.10",
     "3.11",
