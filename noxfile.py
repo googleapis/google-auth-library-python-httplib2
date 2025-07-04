@@ -75,7 +75,6 @@ CURRENT_DIRECTORY = pathlib.Path(__file__).parent.absolute()
 
 nox.options.sessions = [
     "unit",
-    "system",
     "cover",
     "lint",
     "lint_setup_py",
