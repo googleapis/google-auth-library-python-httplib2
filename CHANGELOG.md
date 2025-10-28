@@ -2,6 +2,29 @@
 
 [1]: https://pypi.org/project/google-auth-httplib2/#history
 
+## [0.3.0](https://github.com/googleapis/google-cloud-python/compare/google-auth-httplib2-v0.2.0...google-auth-httplib2-v0.3.0) (2025-10-28)
+
+
+### Features
+
+* onboard google-auth-httplib2 to librarian  ([031052721492d72495389c736431283e4b391bfa](https://github.com/googleapis/google-cloud-python/commit/031052721492d72495389c736431283e4b391bfa))
+
+
+### Bug Fixes
+
+* remove setup.cfg configuration for creating universal wheels (#191)  ([c2be0ae5537d15f20a6c81d1e51408a11ecda22e](https://github.com/googleapis/google-cloud-python/commit/c2be0ae5537d15f20a6c81d1e51408a11ecda22e))
+* drop python 3.6 (#188) * build: add docs
+* 🦉 Updates from OwlBot post-processor
+See https://github.com/googleapis/repo-automation-bots/blob/main/packages/owl-bot/README.md
+* fix build
+* lint
+* fix build
+* remove 3.6
+* clean up
+* lint
+* lint
+--------- ([a69b725eb2f0f4538824ea2bb76581ee37ba3bd9](https://github.com/googleapis/google-cloud-python/commit/a69b725eb2f0f4538824ea2bb76581ee37ba3bd9))
+
 ## [0.2.0](https://github.com/googleapis/google-auth-library-python-httplib2/compare/v0.1.1...v0.2.0) (2023-12-12)
 
 
