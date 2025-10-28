@@ -1,5 +1,7 @@
 # Changelog
 
+[1]: https://pypi.org/project/google-auth-httplib2/#history
+
 ## [0.2.0](https://github.com/googleapis/google-auth-library-python-httplib2/compare/v0.1.1...v0.2.0) (2023-12-12)
 
 
