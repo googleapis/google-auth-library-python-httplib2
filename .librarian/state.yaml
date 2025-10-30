@@ -1,7 +1,7 @@
 image: us-central1-docker.pkg.dev/cloud-sdk-librarian-prod/images-prod/python-librarian-generator:latest
 libraries:
   - id: google-auth-httplib2
-    version: 0.2.0
+    version: 0.2.1
     apis: []
     source_roots:
       - .
