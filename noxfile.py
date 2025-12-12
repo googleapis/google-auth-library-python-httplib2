@@ -42,6 +42,7 @@ UNIT_TEST_PYTHON_VERSIONS: List[str] = [
     "3.11",
     "3.12",
     "3.13",
+    "3.14",
 ]
 UNIT_TEST_STANDARD_DEPENDENCIES = [
     "mock",
@@ -79,6 +80,7 @@ nox.options.sessions = [
     "unit-3.11",
     "unit-3.12",
     "unit-3.13",
+    "unit-3.14",
     "system",
     "cover",
     "lint",
