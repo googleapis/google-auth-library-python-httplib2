@@ -2,6 +2,13 @@
 
 [1]: https://pypi.org/project/google-auth-httplib2/#history
 
+## [0.3.0](https://github.com/googleapis/google-auth-library-python-httplib2/compare/v0.2.1...v0.3.0) (2025-12-12)
+
+
+### Features
+
+* Add support for Python 3.14 (#202) ([bdf128e7586fbd66a56f77080bfd96d4463198e6](https://github.com/googleapis/google-auth-library-python-httplib2/commit/bdf128e7586fbd66a56f77080bfd96d4463198e6))
+
 ## [0.2.1](https://github.com/googleapis/google-auth-library-python-httplib2/compare/v0.2.0...v0.2.1) (2025-10-30)
 
 
