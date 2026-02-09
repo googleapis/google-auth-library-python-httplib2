@@ -1,3 +1,8 @@
+:**NOTE**: **This github repository is archived. The repository contents and history have moved to** `google-cloud-python`_.
+
+.. _google-cloud-python: https://github.com/googleapis/google-cloud-python/tree/main/packages/google-auth-httplib2
+
+
 ``httplib2`` Transport for Google Auth
 ======================================
 
